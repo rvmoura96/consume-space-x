@@ -1,9 +1,16 @@
+from abc import ABC, abstractmethod
 import requests
 from helpers import dict_creator
 
 
-class Requester():
-    def request_latest_launch(self):
+class Requester(ABC):
+    @abstractmethod
+    def request(self):
+        pass
+
+
+class RequesterLatestLauch(Requester):
+    def request(self):
         """Return the latest launch info.
 
         It should return the info about the latest launch as a json.
@@ -12,7 +19,9 @@ class Requester():
         r = requests.get('https://api.spacexdata.com/v3/launches/latest')
         return r.json()
 
-    def request_next_launch(self):
+
+class RequesterNextLauch(Requester):
+    def request(self):
         """Return the next launch info.
 
         It should return the info about the next launch as a json.
@@ -20,7 +29,9 @@ class Requester():
         r = requests.get('https://api.spacexdata.com/v3/launches/next')
         return r.json()
 
-    def request_upcoming_launches(self):
+
+class RequesterUpcomingLauches(Requester):
+    def request(self):
         """Return the upcoming launches.
 
         It should return the infor for all the upcoming launches.
@@ -28,7 +39,9 @@ class Requester():
         r = requests.get('https://api.spacexdata.com/v3/launches/upcoming')
         return r.json()
 
-    def request_past_launches(self):
+
+class RequesterPastLauches(Requester):
+    def request(self):
         """Return the past launches.
 
         It should return the info for all the past launches.
