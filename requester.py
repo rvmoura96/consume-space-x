@@ -48,16 +48,3 @@ class RequesterPastLauches(Requester):
         """
         r = requests.get('https://api.spacexdata.com/v3/launches/past')
         return r.json()
-
-
-if __name__ == '__main__':
-    r = Requester()
-    print(f'Latest info\n{dict_creator(r.request_latest_launch())}\n')
-    print(f'Next lauch info\n{dict_creator(r.request_next_launch())}\n')
-
-    for launch in r.request_upcoming_launches():
-        print(f'{dict_creator(launch)}\n')
-
-    print('Past Launches \n')
-    for launch in r.request_past_launches():
-        print(f'{dict_creator(launch)}\n')
