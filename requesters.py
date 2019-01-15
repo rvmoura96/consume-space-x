@@ -14,7 +14,6 @@ class RequesterLatestLaunch(Requester):
         """Return the latest launch info.
 
         It should return the info about the latest launch as a json.
-
         """
         r = requests.get('https://api.spacexdata.com/v3/launches/latest')
         return r.json()
