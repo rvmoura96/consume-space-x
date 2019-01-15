@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
+
 import requests
-from helpers import dict_creator
 
 
 class Requester(ABC):
