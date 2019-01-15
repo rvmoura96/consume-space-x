@@ -9,7 +9,7 @@ class Requester(ABC):
         pass
 
 
-class RequesterLatestLauch(Requester):
+class RequesterLatestLaunch(Requester):
     def request(self):
         """Return the latest launch info.
 
@@ -20,7 +20,7 @@ class RequesterLatestLauch(Requester):
         return r.json()
 
 
-class RequesterNextLauch(Requester):
+class RequesterNextLaunch(Requester):
     def request(self):
         """Return the next launch info.
 
@@ -30,7 +30,7 @@ class RequesterNextLauch(Requester):
         return r.json()
 
 
-class RequesterUpcomingLauches(Requester):
+class RequesterUpcomingLaunches(Requester):
     def request(self):
         """Return the upcoming launches.
 
@@ -40,7 +40,7 @@ class RequesterUpcomingLauches(Requester):
         return r.json()
 
 
-class RequesterPastLauches(Requester):
+class RequesterPastLaunches(Requester):
     def request(self):
         """Return the past launches.
 
