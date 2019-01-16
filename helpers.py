@@ -1,13 +1,21 @@
-def dict_creator(json):
-    """Format the json to a dict with specific items."""
+from abc import ABC, abstractmethod
 
-    response_dict = {
-        'numero-do-voo': json.get('flight_number'),
-        'nome-da-missao': json.get('mission_name'),
-        'ano-de-lancamento': json.get('launch_year'),
-        'data-lancamento-utc': json.get('launch_date_utc'),
-        'nome-foguete': json.get('rocket').get('rocket_name'),
-        'plataforma-de-lancamento': json.get('launch_site').get('site_name'),
-    }
 
-    return response_dict
+class Formatter(ABC):
+    @abstractmethod
+    def format(self, json):
+        pass
+
+
+class SimpleFormatter(Formatter):
+    def format(self, json):
+        quebra = '\n'
+        retorno_formatado = (
+            f'Número do voo: {json.get("flight_number")}{quebra}'
+            f'Nome da missão: {json.get("mission_name")}{quebra}'
+            f'Ano de lançamento: {json.get("launch_year")}{quebra}'
+            f'Data de lançamento UTC: {json.get("launch_date_utc")}{quebra}'
+            f'Nome do foguete: {json.get("rocket_name")}{quebra}'
+            f'Plataforma de Lançamento: {json.get("launch_site").get("site_name")}'
+        )
+        return retorno_formatado
