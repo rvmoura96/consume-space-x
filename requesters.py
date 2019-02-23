@@ -4,6 +4,9 @@ import requests
 
 
 class Requester(ABC):
+    def __init__(self, url):
+        self.url = url
+
     @abstractmethod
     def request(self):
         pass

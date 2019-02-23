@@ -9,7 +9,6 @@ class Formatter(ABC):
 
 class SimpleFormatter(Formatter):
     def format(self, json):
-        quebra = '\n'
         retorno_formatado = f'''
         Número do voo: { json.get("flight_number") }
         Nome da missão: { json.get("mission_name") }
@@ -17,5 +16,6 @@ class SimpleFormatter(Formatter):
         Data de lançamento UTC: { json.get("launch_date_utc") }
         Nome do foguete: { json.get("rocket").get("rocket_name") }
         Plataforma de Lançamento: {json.get("launch_site").get("site_name")}
+
         '''
         return retorno_formatado
