@@ -4,7 +4,10 @@ import requests
 
 
 class AbstractRequester(ABC):
-    def __init__(self, url):
+    """
+    Just an abstract class.
+    """
+    def __init__(self, url: str) -> None:
         self.url = url
 
     @abstractmethod
@@ -12,7 +15,13 @@ class AbstractRequester(ABC):
         pass
 
 
-class Requester(AbstractRequester):
-    def request(self):
+class RequesterToSpaceXAPI(AbstractRequester):
+    """
+    An extension from AbstractRequester.
+
+    The main role to this extension is, make a request to a URL and
+    convert the result into a dict.
+    """
+    def request(self) -> dict:
         request = requests.get(self.url)
         return request.json()
