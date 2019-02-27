@@ -11,7 +11,7 @@ class AbstractRequester(ABC):
         self.url = url
 
     @abstractmethod
-    def request(self):
+    def request(self) -> None:
         pass
 
 
