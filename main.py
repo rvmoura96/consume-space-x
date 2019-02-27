@@ -1,5 +1,5 @@
 from requesters import RequesterToSpaceXAPI
-from helpers import SimpleFormatter
+from helpers import FormatterSpaceXAPI
 
 
 requester_urls = {
@@ -19,17 +19,18 @@ options_menu = {
 
 
 def main():
-    formatter = SimpleFormatter()
+    formatter = FormatterSpaceXAPI()
     while True:
         option = str()
         iterative_options = ['upcoming', 'past']
 
         for key, value in options_menu.items():
             print(f'[{key}] - {value}')
-        option = input('Selecione uma das opções entre []')
+        option = input('Selecione uma das opções entre []\n')
 
         requester = RequesterToSpaceXAPI(requester_urls.get(option))
         response = requester.request()
+
         if option in iterative_options:
             for i in response:
                 print(formatter.format(i))
