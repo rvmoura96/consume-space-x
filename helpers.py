@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Union
 
+
 class Formatter(ABC):
     @abstractmethod
     def format(self, json):
